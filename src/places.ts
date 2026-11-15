@@ -83,8 +83,13 @@ const normalize = (text: string) => text.normalize('NFD').replace(/\p{M}+/gu, ''
 
 export function filterPlaces(text: string, period: string, person: string) {
   const query = normalize(text.trim());
-  return places.filter(place => normalize(place.name + ' ' + place.region).includes(query) &&
-    place.events.some(item => (!period || item.period === period) && (!person || item.characters.includes(person))));
+  return places.filter(place => {
+    const placeMatches = normalize(place.name + ' ' + place.region).includes(query);
+    return place.events.some(item =>
+      (placeMatches || normalize(item.reference).includes(query)) &&
+      (!period || item.period === period) &&
+      (!person || item.characters.includes(person)));
+  });
 }
 
 export type View = { lon: number; lat: number; zoom: number };
