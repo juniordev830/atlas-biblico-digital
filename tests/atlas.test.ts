@@ -30,3 +30,9 @@ test('projeção centraliza corretamente e zoom respeita limites', () => {
   assert.equal(zoomTo(initialView, .1).zoom, 1);
   assert.equal(zoomTo(initialView, 99).zoom, 18);
 });
+
+test('busca referências nas passagens do mesmo evento filtrado', () => {
+  assert.deepEqual(filterPlaces('atos 27:3', '', 'Paulo').map(item => item.name), ['Sidom']);
+  assert.deepEqual(filterPlaces('atos 27:3', 'Israel e Judá', ''), []);
+  assert.deepEqual(filterPlaces('atos 27:3', '', 'Davi'), []);
+});
