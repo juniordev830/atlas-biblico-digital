@@ -16,7 +16,10 @@ createRoot(document.getElementById('root')!).render(
     <main id="conteudo">
       <div className="intro">
         <h1>Atlas bíblico</h1>
-        <p>SUBAtlas bíblico</p>
+        <nav className="atalhos" aria-label="Seções desta página">
+          <a href="#mapa">Mapa</a>
+          <a href="#locais">Locais encontrados</a>
+        </nav>
       </div>
       <App />
     </main>
