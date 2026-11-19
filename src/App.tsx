@@ -33,7 +33,7 @@ export default function App() {
       </div>
     </section>
     <div className="split">
-      <section className="panel stack">
+      <section className="panel stack" id="mapa" tabIndex={-1}>
         <div className="row between"><h2>Mapa de lugares bíblicos</h2><small role="status">{visible.length} de {places.length} lugares</small></div>
         <Map visible={visible} route={routePlaces} selected={current?.id ?? ''} choose={setSelected} view={view} setView={setView} />
         {activeRoute && <div className="subtle"><strong>{activeRoute.title} · {activeRoute.reference}</strong>
@@ -43,7 +43,7 @@ export default function App() {
         </div>
       </section>
       <aside className="stack">
-        <section className="panel stack">
+        <section className="panel stack" id="locais" tabIndex={-1}>
           <h2>Locais encontrados</h2>
           {!visible.length && <p className="muted">Nenhum local corresponde a esses filtros.</p>}
           <ul className="list atlas-locations">{visible.map(place => <li key={place.id}>
