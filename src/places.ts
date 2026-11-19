@@ -86,7 +86,7 @@ export function filterPlaces(text: string, period: string, person: string) {
   return places.filter(place => {
     const placeMatches = normalize(place.name + ' ' + place.region).includes(query);
     return place.events.some(item =>
-      (placeMatches || normalize(item.reference).includes(query)) &&
+      (placeMatches || normalize(item.reference + ' ' + item.description).includes(query)) &&
       (!period || item.period === period) &&
       (!person || item.characters.includes(person)));
   });

@@ -23,7 +23,7 @@ export default function App() {
   return <div className="stack">
     <section className="panel form">
       <div className="two collapse">
-        <label>Buscar cidade ou região<input type="search" value={text} onChange={event => setText(event.target.value)} placeholder="Ex.: Galileia" /></label>
+        <label>Buscar lugar, região ou evento<input type="search" value={text} onChange={event => setText(event.target.value)} placeholder="Ex.: naufrágio" /></label>
         <label>Período<select value={period} onChange={event => setPeriod(event.target.value)}><option value="">Todos os períodos</option>
           {periods.map(item => <option key={item}>{item}</option>)}</select></label>
         <label>Personagem<select value={person} onChange={event => setPerson(event.target.value)}><option value="">Todos os personagens</option>

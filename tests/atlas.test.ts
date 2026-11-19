@@ -2,6 +2,11 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { filterPlaces, initialView, places, project, routes, zoomTo } from '../src/places.ts';
 
+test('localiza eventos por descrição e respeita os demais filtros', () => {
+  assert.ok(filterPlaces('naufragio', '', 'Paulo').some(place => place.id === 'malta'));
+  assert.ok(!filterPlaces('naufragio', '', 'Moisés').some(place => place.id === 'malta'));
+});
+
 test('lugares têm coordenadas plausíveis para a região, eventos, referência e fonte', () => {
   assert.equal(new Set(places.map(place => place.id)).size, places.length);
   for (const place of places) {
